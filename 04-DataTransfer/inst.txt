@@ -1,0 +1,61 @@
+Tworzymy repo
+Git clone <url>
+Cd <do folderu>
+Tworzymy plik aaa z zawartością „aaa”
+Git add –A
+Git commit –m „Create aaa”
+git push
+git branch b1
+git branch b2
+git branch b3
+tworzymy plik m1 z zawartością "mmm"
+git add -A
+git commit -m "Create m1"
+git push
+git checkout b1
+tworzymy plik b1 z zawarością bbb
+git add -A
+git commit -m "Create b1"
+git push -u origin b1
+git checkout b2
+tworzymy plik b2 z zawarością bbb
+git add -A
+git commit -m "Create b2"
+git push -u origin b2
+git checkout b3
+tworzymy plik b3 z zawarością bbb
+git add -A
+git commit -m "Create b3"
+git push -u origin b3
+git checkout master
+
+Stallusz Zjebanusz zrobił merge graficznie na stronie githuba, wchodzimy w brances i klikamy New pull request
+po kolei przy b1, b2, b3. I tam sobie klikmay. Można to zrobić poleceniami, opcjonalny kod poniżej.
+RObimy poźniej "git pull"
+
+*****
+git merge b1
+git merge b2
+git merge b3
+*****
+
+git branch b4
+git checkout b4
+tworzymy plik x z zawartością "aaa"
+git add -A
+git commit -m "Create x"
+git push
+git chceckou b4
+git merge master
+Mmay konfilkt, otwieramy plik x i go edytujemy ręcznie
+git add -A
+git commit -m "Merge branch ..."
+git push
+Teraz stal graficznie to zrobił z poziomu githuba jak opisane jest wyzej ale mozna zrobić tak:
+****
+git chceckout master
+git merge b4
+git push
+*** efekt ten am ale na tym wykresie wygląda inaczej
+
+

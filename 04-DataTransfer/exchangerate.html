@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exchangerate</title>
+</head>
+<body>
+    <h1>Exchange Rates:</h1>
+    <button type="button" id="target">
+        Click to get exchange rates!
+    </button>
+    <div id="CHF"></div>
+    <div id="EUR"></div>
+    <div id="GBP"></div>
+    <div id="USD"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        function getCountryByCode(code, rates) {
+            return rates.filter(
+                function(data){return data.code == code}
+            );
+        }
+        $(function() {
+            $("#target").click(function(){
+                $.getJSON('http://api.nbp.pl/api/exchangerates/tables/C?format=json', function(data){
+                    let rates = data[0].rates;
+                    let chf = getCountryByCode('CHF', rates)[0];
+                    let eur = getCountryByCode('EUR', rates)[0];
+                    let gbp = getCountryByCode('GBP', rates)[0];
+                    let usd = getCountryByCode('USD', rates)[0];
+                    $('#CHF').html('<h2>CHF</h2><p>Bid: ' + chf.bid + '</p><p>Ask: ' + chf.ask + '</p>');
+                    $('#EUR').html('<h2>EUR</h2><p>Bid: ' + eur.bid + '</p><p>Ask: ' + eur.ask + '</p>');
+                    $('#GBP').html('<h2>GBP</h2><p>Bid: ' + gbp.bid + '</p><p>Ask: ' + gbp.ask + '</p>');
+                    $('#USD').html('<h2>USD</h2><p>Bid: ' + usd.bid + '</p><p>Ask: ' + usd.ask + '</p>');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

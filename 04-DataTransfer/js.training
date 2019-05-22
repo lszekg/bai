@@ -1,0 +1,133 @@
+==== EXCERSISE 5 =====
+====     HTML    =====
+ <body>
+ <p>Double-click here to change the background color.</p>
+ </body>
+====     CSS     =====
+p {
+ background: blue;
+  color: white;
+     }
+p.dbl {
+    background: yellow;
+    color: black;
+  }
+====      JS     =====
+$("p").on("dblclick", function(){
+  $(this).toggleClass("dbl", "addOrRemove");
+} );
+==== EXCERSISE 6 =====
+====     HTML    =====
+<body>
+<h1>Click me to add another!</h1>
+</body>
+====      JS     =====
+$("h1").on("click", () => {
+  $("body").append("<h2>Another one!</h2>")
+} );
+==== EXCERSISE 7 =====
+====     HTML    =====
+<body>
+<p>Click on each header element to return the data passed with the on() method.</p>
+<h3>This is a header1.</h3>
+<h3>This is another header2.</h3>
+</body>
+====      JS     =====
+$("h3").each(function(i){
+   $(this).on("click", {x:i}, function(event){
+     var info = "Header" + $(this).index() + ". paragraph has Event data: " + event.data.x;    
+    $("<p>"+info+"</p>").appendTo( "body" );      
+   });
+});
+==== EXCERSISE 8 =====
+====     HTML    =====
+<body>
+<div style="background-color:yellow"> 
+<p>Click the button to change the background color of this paragraph.</p> 
+<button>Click me!</button> 
+</div>
+</body>
+====      JS     =====
+$("div").on("click", (event) => {
+  $(event.delegateTarget).css("background-color", "red")
+} );
+==== EXCERSISE 9 =====
+====     HTML    =====
+<body>
+<p>Mouse postion:</p> 
+<p id="log"></p>
+</body>
+====      JS     =====
+$( document ).on("mousemove", (event) => {
+  $( "#log" ).text( "pageX: " + event.pageX + ", pageY: " + event.pageY );
+} );
+==== EXCERSISE10 =====
+====     HTML    =====
+<body>
+<p>User ID : <input type="text" id='field1'></p>
+<p>Password : <input type="password" id='field2'></p>
+</body>
+====      JS     =====
+$( function() {
+  $("#field1").attr( "readonly", "readonly" );
+});
+==== EXCERSISE11 =====
+====     HTML    =====
+<body>
+<a id="mysql" href="https://www.w3resource.com/mysql/mysql-tutorials.php">MySQL Tutorial</a>
+  <p></p>  
+<a id="sqlite" href="https://www.w3resource.com/sqlite/">SQLite Tutorial</a>  
+</body>
+====      JS     =====
+$('#mysql').click(function(e) {
+  event.preventDefault();
+ });
+==== EXCERSISE12 =====
+====     HTML    =====
+<body>
+<button>Display event.result</button>
+  <p></p>  
+</body>
+====      JS     =====
+$( "button" ).click(function( event ) {
+  return "Hello";
+});
+$( "button" ).click(function( event ) {
+  $( "p" ).html( event.result );
+});
+==== EXCERSISE13 =====
+====     HTML    =====
+<body>
+<h1>Heading1</h1>
+<h2>Heading2</h2>  
+<p>Paragraph</p>
+<button>Button</button>
+<div id="log"></div>  
+</body>
+====      JS     =====
+$( "body" ).children().on("click", function() {
+  var tag = $(this).prop("tagName")
+  $("#log").html("<p>" + tag + "</p>");
+});
+==== EXCERSISE14 =====
+====     HTML    =====
+<body>
+<h1>Heading1</h1>
+<h2>Heading2</h2>  
+<p>Paragraph</p>
+<button>Button</button>
+<div id="log"></div>  
+</body>
+====      JS     =====
+$(function(){
+    var lastt, tdiff;
+    $("p").click(function(event){
+        if(lastt){
+            tdiff = event.timeStamp - lastt;
+            $("#log").html("<p>Time since last event: " + tdiff + "</p>");
+        }else{
+            $("#log").html("<p>Click again.</p>");
+        }
+        lastt = event.timeStamp;  
+});
+});
